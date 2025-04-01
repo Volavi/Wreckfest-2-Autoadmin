@@ -1,0 +1,105 @@
+{
+    "app_name": "Wreckfest 2 AutoAdmin by @Volavi",
+    "version": 0.1,
+    "debug_mode": false,
+    "random_track_rotation": true,
+    "countdown_time": 50,
+    "tesseract_installation_path": "C:\\Program Files\\Tesseract-OCR\\tesseract.exe",
+    "banner_strings": [
+        {
+            "banner_string_1": "---------------------------------------------------------------------------------------------",
+            "banner_string_2": "Wreckfest 2 AutoAdmin by @Volavi",
+            "banner_string_3": "---------------------------------------------------------------------------------------------",
+            "banner_string_4": "",
+            "banner_string_5": "",
+            "banner_string_6": "",
+            "banner_string_7": ""
+        }
+ 
+    ],
+    "player_join_strings": [
+        {
+            "player_join_string_1": "Welcome to the server {player}!",
+            "player_join_string_2": ""
+        }
+    ],
+    "track_selection_messages": {
+        "selecting": "Selecting next map in rotation...",
+        "selected_race": "Selected random race: {name} - {type} - {laps} laps",
+        "selected_derby": "Selected random derby: {name} - {type} - Time: {time}min"
+    },
+    "track_rotation": [
+        {
+            "track": "track02_1",
+            "name": "Savolax Sandpit",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 4
+        },
+        {
+            "track": "track02_1_rev",
+            "name": "Savolax Sandpit - Reversed",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 4
+        },
+        {
+            "track": "track06_1",
+            "name": "Speedway Race",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 7,
+            "damage": "normal",
+            "bots": 8
+        },
+        {
+            "track": "track06_2",
+            "name": "Speedway Derby",
+            "type": "Banger Derby",
+            "rules": "derby",
+            "time": 3,
+            "damage": "realistic",
+            "bots": 8
+        },
+        {
+            "track": "track06_4",
+            "name": "Speedway Figure 8",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 8
+        },
+        {
+            "track": "track07_1",
+            "name": "Scrapyard Main Route",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 4
+        },
+        {
+            "track": "track07_3",
+            "name": "Scrapyard Bonebreaker",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 5,
+            "damage": "normal",
+            "bots": 8
+        },
+        {
+            "track": "track08_1",
+            "name": "Testing Grounds",
+            "type": "Banger Derby",
+            "rules": "derby",
+            "time": 3,
+            "damage": "realistic",
+            "bots": 6
+        }
+    ]
+}
