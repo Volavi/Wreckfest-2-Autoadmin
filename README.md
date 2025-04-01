@@ -79,7 +79,7 @@ Be prepeared for crashes and issues! I myself have been running this script with
 
    ✖ **Requires stable connection** - High ping or unstable connection might hinder usage
 
-   ✖ **OCR can be flaky** - Depends on clear console text visibility
+   ✖ **OCR can be flaky** - Depends on clear console text visibility, methods for clearing the command window are primitive
    
    ✖ **Window must be visible and focused** - Needs the server window unobstructed
    
@@ -95,7 +95,6 @@ Be prepeared for crashes and issues! I myself have been running this script with
   - Automatic (configurable) removal and addition of bots in relation to player count
   - Better error handling for OCR failures
   - Ability to add verbosity from config file via debug_mode
-  - Web interface for remote administration
 
 ## 🤝 Contributing
    Contributions welcome! Please fork the repository and submit pull requests.
