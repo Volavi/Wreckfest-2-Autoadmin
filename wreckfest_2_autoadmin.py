@@ -83,7 +83,7 @@ class WreckfestAutoAdmin:
         """Analyze console output and react to events"""
         # Detect race completion
         if ("Race Finished" in text or "Race Abandoned" in text or "Finished" in text or "Abandoned" in text):
-            print("Detected 'Race Finished' or 'Race Abandoned'")
+            #DEBUG print("Detected 'Race Finished' or 'Race Abandoned'")
             self.send_server_command("race_director disabled")
             
             # Send banner messages from config
