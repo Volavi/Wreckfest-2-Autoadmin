@@ -48,9 +48,11 @@ An automated administration tool for Wreckfest 2 dedicated server that handles t
    ```
 ## 🚀 Usage
 
-   ```bash
-   python wreckfest_2_autoadmin.py
-   ```
+   - Make sure that the Wrecfest 2 Dedicated server is running
+   - Run the script within it's folder:
+      ```bash
+      python wreckfest_2_autoadmin.py
+      ```
    The tool will:
    
      1. Automatically find your Wreckfest server window
