@@ -9,11 +9,21 @@ from PIL import Image # Needed for Tesseract-OCR
 
 class WreckfestAutoAdmin:
     def __init__(self):
+        self.current_event = None
         self.players = []
         self.server_window = None
         self.config = self.load_config()
-        # Configure Tesseract path from config if not in PATH
-        pytesseract.pytesseract.tesseract_cmd = self.config.get['tesseract_installation_path']
+
+        # Configure Tesseract - with fallback if not in config
+        tesseract_path = self.config.get('tesseract_installation_path')
+        if tesseract_path:  # Only set if path exists in config
+            pytesseract.pytesseract.tesseract_cmd = tesseract_path
+        try:
+            pytesseract.get_tesseract_version()  # Test if Tesseract works
+        except pytesseract.TesseractNotFoundError:
+            if not tesseract_path:
+                raise Exception("Tesseract not found in PATH and no path specified in config.json")
+            
         self.TRACK_ROTATION = self.config.get('track_rotation', [])
         self.banner_strings = self.config.get('banner_strings', [{}])[0]
         self.player_join_strings = self.config.get('player_join_strings', [{}])[0]
@@ -104,16 +114,33 @@ class WreckfestAutoAdmin:
                     #DEBUG - print(f"Detected player join: {player}")
 
     def select_track(self):
-        """change track/rules"""
+        """Select and apply the next track in rotation, ensuring no immediate repeats"""
         self.send_server_command("race_director disabled")
         time.sleep(5)
         self.send_server_message("Selecting next map in rotation...")
         time.sleep(5)
-        available_tracks = [t for t in self.TRACK_ROTATION if t != self.current_event]
-        next_event = random.choice(available_tracks if available_tracks else self.TRACK_ROTATION)
-        # Ensure the next event is not the same as the current one
-        while next_event == self.current_event:
-            next_event = random.choice(available_tracks if available_tracks else self.TRACK_ROTATION)
+
+        # Handle first run or empty rotation
+        if not hasattr(self, 'current_event') or not self.current_event:
+            if self.TRACK_ROTATION:
+                next_event = random.choice(self.TRACK_ROTATION)
+            else:
+                print("Warning: No tracks available in rotation!")
+                return
+        else:
+            # Create list of available tracks excluding current one
+            available_tracks = [
+                t for t in self.TRACK_ROTATION 
+                if t['track'] != self.current_event['track']
+            ]
+            
+            # Fallback to all tracks if only one exists
+            if not available_tracks:
+                available_tracks = self.TRACK_ROTATION.copy()
+            
+            next_event = random.choice(available_tracks)
+
+        # Apply the new track settings
         self.apply_event_settings(next_event)
 
     def apply_event_settings(self, event):

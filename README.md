@@ -82,7 +82,9 @@ An automated administration tool for Wreckfest 2 dedicated server that handles t
 
   - Player voting system for track selection
   - Ability to change wether track selection is random or not
+  - Randomised weather selection for tracks
   - Better error handling for OCR failures
+  - Ability to add verbosity from config file via debug_mode
   - Web interface for remote administration
 
 ## 🤝 Contributing
