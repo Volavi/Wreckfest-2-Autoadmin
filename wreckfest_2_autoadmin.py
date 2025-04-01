@@ -4,7 +4,8 @@ import re
 import random
 import pygetwindow as gw
 import pytesseract
-import json 
+import json
+from PIL import Image # Needed for Tesseract-OCR
 
 class WreckfestAutoAdmin:
     def __init__(self):

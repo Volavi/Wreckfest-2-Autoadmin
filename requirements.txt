@@ -1,0 +1,7 @@
+# Wreckfest AutoAdmin Requirements
+pyautogui
+pygetwindow
+pytesseract
+Pillow  # Required by pytesseract
+
+# Pytesseract must be downloaded separately and added to PATH or specified in the config.json file

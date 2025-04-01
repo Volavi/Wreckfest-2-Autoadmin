@@ -1,6 +1,7 @@
-# Wreckfest 2 AutoAdmin Tool
 
 ![Wreckfest Logo](https://wreckfest2.thqnordic.com/game-sites/wreckfest2/logo_wreckfest2.png)
+
+# Wreckfest 2 AutoAdmin Tool
 
 An automated administration tool for Wreckfest 2 dedicated server that handles track rotation, player management, and server messaging.
 
