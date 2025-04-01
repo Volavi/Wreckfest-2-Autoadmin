@@ -1,6 +1,8 @@
 {
     "app_name": "Wreckfest 2 AutoAdmin by @Volavi",
     "version": 0.1,
+    "author": "@Volavi",
+    "display_init_message": true,
     "debug_mode": false,
     "random_track_rotation": true,
     "countdown_time": 50,

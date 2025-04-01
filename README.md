@@ -46,6 +46,7 @@ Be prepeared for crashes and issues! I myself have been running this script with
    {
        "track_rotation": [],         // Your track configurations including: laps, bots, damage, etc...
        "banner_strings": {},         // "Banner" to be shown in chat after every race
+                                     // Messages have character limit (128)
        "player_join_strings": {},    // Welcome messages
        "random_track_rotation": true // Rotation mode (does not work at the moment)
    }
