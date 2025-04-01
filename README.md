@@ -93,4 +93,4 @@ An automated administration tool for Wreckfest 2 dedicated server that handles t
 
 ---
 
-*Created by [https://github.com/Volavi](Volavi) - Not affiliated with THQ Nordic or Wreckfest developers*
+*Created by [Volavi](https://github.com/Volavi) - Not affiliated with THQ Nordic or Wreckfest developers*
