@@ -53,7 +53,7 @@ Be prepeared for crashes and issues! I myself have been running this script with
    ```
 ## 🚀 Usage
 
-   - Make sure that the Wrecfest 2 Dedicated server is running
+   - Make sure that the Wreckfest 2 Dedicated server is running
    - Run the script within it's folder:
       ```bash
       python wreckfest_2_autoadmin.py
