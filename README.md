@@ -72,6 +72,8 @@ An automated administration tool for Wreckfest 2 dedicated server that handles t
 
 ## ❌ The Bad (Current Limitations)
 
+   ✖ **Requires stable connection** - High ping or unstable connection might hinder usage
+
    ✖ **OCR can be flaky** - Depends on clear console text visibility
    
    ✖ **Window must be visible and focused** - Needs the server window unobstructed
