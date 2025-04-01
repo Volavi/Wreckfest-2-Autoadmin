@@ -9,11 +9,11 @@ from PIL import Image # Needed for Tesseract-OCR
 
 class WreckfestAutoAdmin:
     def __init__(self):
-        # Configure Tesseract path from config if not in PATH
-        pytesseract.pytesseract.tesseract_cmd = self.config['tesseract_installation_path']
         self.players = []
         self.server_window = None
         self.config = self.load_config()
+        # Configure Tesseract path from config if not in PATH
+        pytesseract.pytesseract.tesseract_cmd = self.config.get['tesseract_installation_path']
         self.TRACK_ROTATION = self.config.get('track_rotation', [])
         self.banner_strings = self.config.get('banner_strings', [{}])[0]
         self.player_join_strings = self.config.get('player_join_strings', [{}])[0]
