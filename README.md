@@ -5,6 +5,10 @@
 
 An automated administration tool for Wreckfest 2 dedicated server that handles track rotation, player management, and server messaging.
 
+Still very WIP but plans are in motion to make this into a very flexible and powerful system for managing Wreckfest 2 Dedicated servers. 
+
+Be prepeared for crashes and issues! I myself have been running this script within a .bat script that checks if it is running or not making sure that it restarts and runs with the Server window
+
 ## ✨ Features
 
 - **Automated Track Rotation**: Randomized track selection (Sequential track selection is planned)
@@ -87,6 +91,7 @@ An automated administration tool for Wreckfest 2 dedicated server that handles t
   - Player voting system for track selection
   - Ability to change wether track selection is random or not
   - Randomised weather selection for tracks
+  - Automatic (configurable) removal and addition of bots in relation to player count
   - Better error handling for OCR failures
   - Ability to add verbosity from config file via debug_mode
   - Web interface for remote administration
