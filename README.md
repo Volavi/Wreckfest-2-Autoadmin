@@ -15,8 +15,8 @@ Be prepeared for crashes and issues! I myself have been running this script with
 - **Player Management**: Automatic welcome messages for new players
 - **OCR Integration**: Reads server console output using Tesseract OCR
 - **Configurable Messages**: All strings customizable via JSON
-- **Server Command Automation**: Handles race starts/ends automatically
-- **Damage & Rules Control**: Adjusts server settings per track type
+- **Server Command Automation**: Handles track rotations and messaging automatically
+- **Race settings management**: Adjusts server settings per track type
 
 ## ⚙️ Installation
 
@@ -131,6 +131,7 @@ Be prepeared for crashes and issues! I myself have been running this script with
   - Ensuring legality in their jurisdiction
 
 *Last Updated: 2025-04-02 | [Full License Text](LICENSE)*
+
 ---
 
 *Created by [Volavi](https://github.com/Volavi) - Not affiliated with THQ Nordic or Wreckfest developers*
