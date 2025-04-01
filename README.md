@@ -60,10 +60,10 @@ Be prepeared for crashes and issues! I myself have been running this script with
       ```
    The tool will:
    
-     1. Automatically find your Wreckfest server window
-     2. Begin monitoring console output
-     3. Handle track rotations when races end
-     4. Welcome new players with configurable messages
+   1. Automatically find your Wreckfest server window
+   2. Begin monitoring console output
+   3. Handle track rotations when races end
+   4. Welcome new players with configurable messages
 
 ## ✅ The Good
    
