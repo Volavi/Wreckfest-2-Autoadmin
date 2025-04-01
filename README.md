@@ -59,23 +59,23 @@ The tool will:
 
 ## ✅ The Good
 
-✔ Time-saving automation - No manual track changes needed
+✔ **Time-saving automation** - No manual track changes needed
 
-✔ Fully configurable - Adjust every message and setting via JSON
+✔ **Fully configurable** - Adjust every message and setting via JSON
 
-✔ OCR-based - Works without server mods or special access
+✔ **OCR-based** - Works without server mods or special access
 
-✔ Randomization - Keeps gameplay fresh with random track selection
+✔ **Randomization** - Keeps gameplay fresh with random track selection
 
 ## ❌ The Bad (Current Limitations)
 
-✖ OCR can be flaky - Depends on clear console text visibility
+✖ **OCR can be flaky** - Depends on clear console text visibility
 
-✖ Window must be visible and focused - Needs the server window unobstructed
+✖ **Window must be visible and focused** - Needs the server window unobstructed
 
-✖ No voting system yet - Currently placeholder in config (coming soon!)
+✖ **No voting system yet** - Currently placeholder in config (coming soon!)
 
-✖ Windows-only - Currently optimized for Windows systems
+✖ **Windows-only** - Currently optimized for Windows systems
 
 ## 🔮 Planned Features
 
@@ -86,3 +86,11 @@ The tool will:
 
 ## 🤝 Contributing
 Contributions welcome! Please fork the repository and submit pull requests.
+
+## ⚠️ Disclaimer
+
+This is an unofficial tool not affiliated with Bugbear Entertainment or THQ Nordic. Use at your own risk.
+
+---
+
+*Created by [https://github.com/Volavi](Volavi) - Not affiliated with THQ Nordic or Wreckfest developers*
