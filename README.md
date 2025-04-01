@@ -36,46 +36,46 @@ An automated administration tool for Wreckfest 2 dedicated server that handles t
 
 ## 🛠️ Configuration
 
-Key configurable elements in `config.json`:
-```json
-{
-    "track_rotation": [],         // Your track configurations including: laps, bots, damage, etc...
-    "banner_strings": {},         // "Banner" to be shown in chat after every race
-    "player_join_strings": {},    // Welcome messages
-    "random_track_rotation": true // Rotation mode (does not work at the moment)
-}
-```
+   Key configurable elements in `config.json`:
+   ```json
+   {
+       "track_rotation": [],         // Your track configurations including: laps, bots, damage, etc...
+       "banner_strings": {},         // "Banner" to be shown in chat after every race
+       "player_join_strings": {},    // Welcome messages
+       "random_track_rotation": true // Rotation mode (does not work at the moment)
+   }
+   ```
 ## 🚀 Usage
 
-```bash
-python wreckfest_2_autoadmin.py
-```
-The tool will:
-
-  1. Automatically find your Wreckfest server window
-  2. Begin monitoring console output
-  3. Handle track rotations when races end
-  4. Welcome new players with configurable messages
+   ```bash
+   python wreckfest_2_autoadmin.py
+   ```
+   The tool will:
+   
+     1. Automatically find your Wreckfest server window
+     2. Begin monitoring console output
+     3. Handle track rotations when races end
+     4. Welcome new players with configurable messages
 
 ## ✅ The Good
-
-✔ **Time-saving automation** - No manual track changes needed
-
-✔ **Fully configurable** - Adjust every message and setting via JSON
-
-✔ **OCR-based** - Works without server mods or special access
-
-✔ **Randomization** - Keeps gameplay fresh with random track selection
+   
+   ✔ **Time-saving automation** - No manual track changes needed
+   
+   ✔ **Fully configurable** - Adjust every message and setting via JSON
+   
+   ✔ **OCR-based** - Works without server mods or special access
+   
+   ✔ **Randomization** - Keeps gameplay fresh with random track selection
 
 ## ❌ The Bad (Current Limitations)
 
-✖ **OCR can be flaky** - Depends on clear console text visibility
-
-✖ **Window must be visible and focused** - Needs the server window unobstructed
-
-✖ **No voting system yet** - Currently placeholder in config (coming soon!)
-
-✖ **Windows-only** - Currently optimized for Windows systems
+   ✖ **OCR can be flaky** - Depends on clear console text visibility
+   
+   ✖ **Window must be visible and focused** - Needs the server window unobstructed
+   
+   ✖ **No voting system yet** - Currently placeholder in config (coming soon!)
+   
+   ✖ **Windows-only** - Currently optimized for Windows systems
 
 ## 🔮 Planned Features
 
@@ -85,11 +85,11 @@ The tool will:
   - Web interface for remote administration
 
 ## 🤝 Contributing
-Contributions welcome! Please fork the repository and submit pull requests.
+   Contributions welcome! Please fork the repository and submit pull requests.
 
 ## ⚠️ Disclaimer
 
-This is an unofficial tool not affiliated with Bugbear Entertainment or THQ Nordic. Use at your own risk.
+   This is an unofficial tool not affiliated with Bugbear Entertainment or THQ Nordic. Use at your own risk.
 
 ---
 
