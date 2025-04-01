@@ -32,19 +32,21 @@ An automated administration tool for Wreckfest 2 dedicated server that handles t
      ```json
      "tesseract_installation_path": "C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
      ```
-   - - **NOTE:** *might work if Tesseract is in PATH*
+      - **NOTE:** *Might also work if Tesseract is in PATH*
 
 ## 🛠️ Configuration
+
 Key configurable elements in `config.json`:
 ```json
 {
     "track_rotation": [],         // Your track configurations including: laps, bots, damage, etc...
     "banner_strings": {},         // "Banner" to be shown in chat after every race
     "player_join_strings": {},    // Welcome messages
-    "random_track_rotation": true // Rotation mode
+    "random_track_rotation": true // Rotation mode (does not work at the moment)
 }
 ```
 ## 🚀 Usage
+
 ```bash
 python wreckfest_2_autoadmin.py
 ```
@@ -72,6 +74,7 @@ The tool will:
 ## 🔮 Planned Features
 
   - Player voting system for track selection
+  - Ability to change wether track selection is random or not
   - Better error handling for OCR failures
   - Web interface for remote administration
 
