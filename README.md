@@ -6,7 +6,7 @@ An automated administration tool for Wreckfest 2 dedicated server that handles t
 
 ## ✨ Features
 
-- **Automated Track Rotation**: Randomized or sequential track selection
+- **Automated Track Rotation**: Randomized track selection (Sequential track selection is planned)
 - **Player Management**: Automatic welcome messages for new players
 - **OCR Integration**: Reads server console output using Tesseract OCR
 - **Configurable Messages**: All strings customizable via JSON
