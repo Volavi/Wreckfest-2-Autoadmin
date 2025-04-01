@@ -60,15 +60,21 @@ The tool will:
 ## ✅ The Good
 
 ✔ Time-saving automation - No manual track changes needed
+
 ✔ Fully configurable - Adjust every message and setting via JSON
+
 ✔ OCR-based - Works without server mods or special access
+
 ✔ Randomization - Keeps gameplay fresh with random track selection
 
 ## ❌ The Bad (Current Limitations)
 
 ✖ OCR can be flaky - Depends on clear console text visibility
+
 ✖ Window must be visible and focused - Needs the server window unobstructed
+
 ✖ No voting system yet - Currently placeholder in config (coming soon!)
+
 ✖ Windows-only - Currently optimized for Windows systems
 
 ## 🔮 Planned Features
