@@ -104,6 +104,34 @@ Be prepeared for crashes and issues! I myself have been running this script with
 
    This is an unofficial tool not affiliated with Bugbear Entertainment or THQ Nordic. Use at your own risk.
 
+## ⚠️ Legal Disclaimer (GNU GPL v3)
+
+**This project is free software under GNU GPL v3**: You may use, modify, and distribute it under the terms of the [GNU General Public License](LICENSE). By using this software, you agree to the following:
+
+### 📜 No Warranty & Liability
+- **Absolutely no warranty** is provided. The authors and contributors **are not liable** for:
+  - Game bans, server issues, or data loss
+  - Any damages (direct or indirect) from software use
+  - Third-party modifications or misuse
+
+### ©️ Copyright & Licensing
+- **Not affiliated** with Bugbear Entertainment, THQ Nordic, or Wreckfest®
+- Contains **no proprietary game code/assets** (only original automation scripts)
+- **Derivative works must also be open-source** under GPL (see [§5 of GPL v3](https://www.gnu.org/licenses/gpl-3.0.en.html#section5))
+
+### 🔄 Copyleft Requirements
+- If you redistribute this software (modified or unmodified):
+  - **Full source code must be included**
+  - **Same license (GPL v3) must be retained**
+  - **Changes must be documented**
+
+### ⚖️ Fair Use Notice
+- Intended for **personal/non-commercial** server administration
+- Users are responsible for:
+  - Complying with Wreckfest 2's EULA
+  - Ensuring legality in their jurisdiction
+
+*Last Updated: 2025-04-02 | [Full License Text](LICENSE)*
 ---
 
 *Created by [Volavi](https://github.com/Volavi) - Not affiliated with THQ Nordic or Wreckfest developers*
