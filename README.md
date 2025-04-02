@@ -54,7 +54,7 @@ If you have issues or find something that isn't working please submit an [issue 
        "tesseract_installation_path": "..." // Path to Tesseract-OCR, See: "Requirements"
    }
    ```
-   - NOTE: `"debug_mode": false` and `"random_track_rotation": true` variables are not used ATM and do nothing!
+   - NOTE: `"debug_mode": false` and `"random_track_rotation": true` variables are not used at the moment and do nothing!
      
 ## 🚀 Usage
 
