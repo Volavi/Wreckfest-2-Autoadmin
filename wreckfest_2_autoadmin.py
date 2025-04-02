@@ -49,6 +49,8 @@ class WreckfestAutoAdmin:
                 self.server_window.activate()
                 time.sleep(1)
                 print(f"Found server window: {self.server_window.title}")
+                print(f"Window position: (left={self.server_window.left}, top={self.server_window.top})")
+                print(f"Window size: (width={self.server_window.width}, height={self.server_window.height})")
             else:
                 raise Exception("Wreckfest 2 server window not found")
         except IndexError:
@@ -81,37 +83,57 @@ class WreckfestAutoAdmin:
 
     def process_console_output(self, text):
         """Analyze console output and react to events"""
-        # Detect race completion
-        if ("Race Finished" in text or "Race Abandoned" in text or "Finished" in text or "Abandoned" in text):
-            #DEBUG print("Detected 'Race Finished' or 'Race Abandoned'")
-            self.send_server_command("race_director disabled")
-            
-            # Send banner messages from config
-            for i in range(1, 8):  # For banner_string_1 to banner_string_7
-                msg = self.banner_strings.get(f'banner_string_{i}', '')
-                if msg:  # Only send non-empty messages
-                    self.send_server_message(msg)
-            # Wait before changing track
-            time.sleep(5)
-            self.select_track()
-        
-        elif ("Race Started" in text or "Started" in text):
-            for i in range(0, 15):
-                self.send_server_command("FILLING")
-            self.send_server_command("race_director enabled")
+        for line in text.split('\n'):
+            line = line.strip()
+            if self.config.get('debug_mode', False):
+                print(line)
+            if not line:
+                continue  # Skip empty lines
 
-        # Detect player joins
-        join_matches = re.finditer(r'Player joined: \d+, (.+?), \d+', text)
-        for match in join_matches:
-            player = match.group(1)
-            if player not in self.players:
-                self.players.append(player)
-                # Send player join messages from config
-                for i in range(1, 3):  # For player_join_string_1 to player_join_string_2
-                    msg = self.player_join_strings.get(f'player_join_string_{i}', '')
-                    if msg:  # Only send non-empty messages
-                        self.send_server_message(msg.format(player=player))
-                    #DEBUG - print(f"Detected player join: {player}")
+            # Check if line is a system message (no ":" before the keyword)
+            if ("Race Finished" in line or "Race Abandoned" in line):
+                
+                # Only proceed if there's no player name prefix (no ":" before the keywords)
+                if ": " not in line.split("Race Finished")[0] and \
+                ": " not in line.split("Race Abandoned")[0]:
+                    
+                    #DEBUG print("Detected system message (Race Finished)")
+                    self.send_server_command("race_director disabled")
+                    
+                    # Send banner messages
+                    for i in range(1, 8):
+                        msg = self.banner_strings.get(f'banner_string_{i}', '')
+                        if msg:
+                            self.send_server_message(msg)
+                    time.sleep(5)
+                    self.select_track()
+
+            # Similar logic for Race Started
+            elif ("Race Started" in line) and \
+                ":" not in line.split("Race Started")[0]:
+                
+                for i in range(0, 15):
+                    self.send_server_command("FILLING")
+                self.send_server_command("race_director enabled")
+
+            # Player join detection
+            join_matches = re.finditer(r'Player joined: \d+, (.+?), \d+', line)
+            for match in join_matches:
+                player = match.group(1)
+                if player not in self.players:
+                    self.players.append(player)
+                    for i in range(1, 3):
+                        msg = self.player_join_strings.get(f'player_join_string_{i}', '')
+                        if msg:
+                            self.send_server_message(msg.format(player=player))
+
+            # Player leave detection
+            leave_match = re.search(r'Player left: \d+, (.+?), \d+', line)
+            if leave_match:
+                player = leave_match.group(1)
+                if player in self.players:
+                    self.players.remove(player)
+                    #DEBUG print(f"Player left: {player}")
 
     def select_track(self):
         """Select and apply the next track in rotation, ensuring no immediate repeats"""
@@ -196,27 +218,47 @@ class WreckfestAutoAdmin:
         print("Wreckfest 2 Auto-Admin started. Monitoring server console...")
         try:
             while True:
-                # Get console text (you'll need to implement this properly)
+                # Get console text
                 console_text = self.capture_console_text()
                 if console_text:
                     self.process_console_output(console_text)
-                time.sleep(2)
+                time.sleep(1)
                 
         except KeyboardInterrupt:
             print("\nStopping Auto-Admin...")
 
     def capture_console_text(self):
-        """Capture text from console using OCR"""
+        """Capture text from console using OCR with window coordinates"""
         try:
-            # Adjust these coordinates to match your console text area
-            console_region = (
-                self.server_window.left + 15,
-                self.server_window.top + 30,
-                self.server_window.width - 20,
-                self.server_window.height - 40
-            )
-            screenshot = pyautogui.screenshot(region=console_region)
-            return pytesseract.image_to_string(screenshot)
+            if not self.server_window:
+                print("Error: Server window not initialized")
+                return ""
+            
+            # Get the window's position and size
+            x, y = self.server_window.left, self.server_window.top
+            width, height = self.server_window.width, self.server_window.height
+            
+            # Define the region to capture (adjust these values to focus on the console area)
+            console_x = x + 7  # 15 pixels from left edge of window
+            console_y = y + 30  # 30 pixels from top edge of window
+            console_width = width - 30  # 15px margin on each side
+            console_height = height - 50  # Leave space for window borders
+            
+            # Take screenshot of just the console area
+            screenshot = pyautogui.screenshot(region=(console_x, console_y, console_width, console_height))
+
+            # Convert to grayscale and enhance contrast
+            img = screenshot.convert('L')  # Grayscale
+            img = img.point(lambda p: p * 2)  # Increase contrast
+            
+            if self.config.get('debug_mode', False):
+                # Optional: Save processed image for debugging
+                img.save("processed_console.png")
+                screenshot.save("console_screenshot.png")
+            
+            # Extract text using OCR
+            return pytesseract.image_to_string(img)
+            
         except Exception as e:
             print(f"Error capturing console text: {e}")
             return ""
