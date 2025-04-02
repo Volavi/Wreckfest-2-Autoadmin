@@ -5,9 +5,12 @@
 
 An automated administration tool for Wreckfest 2 dedicated server that handles track rotation, player management, and server messaging.
 
-Still very WIP but plans are in motion to make this into a very flexible and powerful system for managing Wreckfest 2 Dedicated servers. 
+Still very WIP but plans are in motion to make this into a very flexible and powerful system for managing Wreckfest 2 Dedicated servers with a vast set of features.
 
-Be prepeared for crashes and issues! I myself have been running this script within a .bat script that checks if it is running or not making sure that it restarts and runs with the Server window
+If you have issues or find something that isn't working please submit an [issue ticket](https://github.com/Volavi/Wreckfest-2-Autoadmin/issues) or contact me at Discord:
+   - @Sak-Usammakko
+
+*Be prepeared for crashes and issues! I myself have been running this script within a .bat script that checks if it is running or not making sure that it restarts and runs with the Server window*
 
 ## ✨ Features
 
@@ -15,8 +18,8 @@ Be prepeared for crashes and issues! I myself have been running this script with
 - **Player Management**: Automatic welcome messages for new players
 - **OCR Integration**: Reads server console output using Tesseract OCR
 - **Configurable Messages**: All strings customizable via JSON
-- **Server Command Automation**: Handles race starts/ends automatically
-- **Damage & Rules Control**: Adjusts server settings per track type
+- **Server Command Automation**: Handles track rotations and messaging automatically
+- **Race settings management**: Adjusts server settings per track type
 
 ## ⚙️ Installation
 
@@ -25,15 +28,16 @@ Be prepeared for crashes and issues! I myself have been running this script with
    - Tesseract OCR installed ([Download here](https://github.com/UB-Mannheim/tesseract/wiki))
    - Wreckfest 2 dedicated server
   
-2. **Download this repo or download ZIP from *Releases* -page**:
+2. **Download this repo or download ZIP from [*Releases*](https://github.com/Volavi/Wreckfest-2-Autoadmin/releases) -page**:
 
 3. **Install dependencies**:
+   - Open CMD in the repository folder or navigate to it, and type:
    ```bash
    pip install -r requirements.txt
    ```
-4. **Configure**:
+5. **Configure**:
    - Edit `config.json` to match your server preferences
-   - Set your Tesseract path in config (placeholder as the default location):
+   - Set your Tesseract path in config (Pre set string in `config.json` is the default location):
      ```json
      "tesseract_installation_path": "C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
      ```
@@ -49,21 +53,22 @@ Be prepeared for crashes and issues! I myself have been running this script with
                                      // Messages have character limit (128)
        "player_join_strings": {},    // Welcome messages
        "random_track_rotation": true // Rotation mode (does not work at the moment)
+       "tesseract_installation_path": "..." // Path to Tesseract-OCR, See: "Requirements"
    }
    ```
 ## 🚀 Usage
 
-   - Make sure that the Wrecfest 2 Dedicated server is running
+   - Make sure that the Wreckfest 2 Dedicated server is running
    - Run the script within it's folder:
       ```bash
       python wreckfest_2_autoadmin.py
       ```
    The tool will:
    
-     1. Automatically find your Wreckfest server window
-     2. Begin monitoring console output
-     3. Handle track rotations when races end
-     4. Welcome new players with configurable messages
+   1. Automatically find your Wreckfest server window
+   2. Begin monitoring console output
+   3. Handle track rotations when races end
+   4. Welcome new players with configurable messages
 
 ## ✅ The Good
    
@@ -79,7 +84,7 @@ Be prepeared for crashes and issues! I myself have been running this script with
 
    ✖ **Requires stable connection** - High ping or unstable connection might hinder usage
 
-   ✖ **OCR can be flaky** - Depends on clear console text visibility
+   ✖ **OCR can be flaky** - Depends on clear console text visibility, methods for clearing the command window are primitive
    
    ✖ **Window must be visible and focused** - Needs the server window unobstructed
    
@@ -95,7 +100,7 @@ Be prepeared for crashes and issues! I myself have been running this script with
   - Automatic (configurable) removal and addition of bots in relation to player count
   - Better error handling for OCR failures
   - Ability to add verbosity from config file via debug_mode
-  - Web interface for remote administration
+  - Automatic moderation of chat messages and server actions derived from them
 
 ## 🤝 Contributing
    Contributions welcome! Please fork the repository and submit pull requests.
@@ -132,6 +137,7 @@ Be prepeared for crashes and issues! I myself have been running this script with
   - Ensuring legality in their jurisdiction
 
 *Last Updated: 2025-04-02 | [Full License Text](LICENSE)*
+
 ---
 
 *Created by [Volavi](https://github.com/Volavi) - Not affiliated with THQ Nordic or Wreckfest developers*
