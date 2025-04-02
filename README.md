@@ -5,9 +5,12 @@
 
 An automated administration tool for Wreckfest 2 dedicated server that handles track rotation, player management, and server messaging.
 
-Still very WIP but plans are in motion to make this into a very flexible and powerful system for managing Wreckfest 2 Dedicated servers. 
+Still very WIP but plans are in motion to make this into a very flexible and powerful system for managing Wreckfest 2 Dedicated servers with a vast set of features.
 
-Be prepeared for crashes and issues! I myself have been running this script within a .bat script that checks if it is running or not making sure that it restarts and runs with the Server window
+If you have issues or find something that isn't working please submit an [issue ticket](https://github.com/Volavi/Wreckfest-2-Autoadmin/issues) or contact me at Discord:
+   - @Sak-Usammakko
+
+*Be prepeared for crashes and issues! I myself have been running this script within a .bat script that checks if it is running or not making sure that it restarts and runs with the Server window*
 
 ## ✨ Features
 
@@ -25,7 +28,7 @@ Be prepeared for crashes and issues! I myself have been running this script with
    - Tesseract OCR installed ([Download here](https://github.com/UB-Mannheim/tesseract/wiki))
    - Wreckfest 2 dedicated server
   
-2. **Download this repo or download ZIP from *Releases* -page**:
+2. **Download this repo or download ZIP from [*Releases*](https://github.com/Volavi/Wreckfest-2-Autoadmin/releases) -page**:
 
 3. **Install dependencies**:
    ```bash
@@ -95,6 +98,7 @@ Be prepeared for crashes and issues! I myself have been running this script with
   - Automatic (configurable) removal and addition of bots in relation to player count
   - Better error handling for OCR failures
   - Ability to add verbosity from config file via debug_mode
+  - Automatic moderation of chat messages and server actions derived from them
 
 ## 🤝 Contributing
    Contributions welcome! Please fork the repository and submit pull requests.
