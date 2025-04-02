@@ -31,12 +31,13 @@ If you have issues or find something that isn't working please submit an [issue 
 2. **Download this repo or download ZIP from [*Releases*](https://github.com/Volavi/Wreckfest-2-Autoadmin/releases) -page**:
 
 3. **Install dependencies**:
+   - Open CMD in the repository folder or navigate to it, and type:
    ```bash
    pip install -r requirements.txt
    ```
-4. **Configure**:
+5. **Configure**:
    - Edit `config.json` to match your server preferences
-   - Set your Tesseract path in config (placeholder as the default location):
+   - Set your Tesseract path in config (Pre set string in `config.json` is the default location):
      ```json
      "tesseract_installation_path": "C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
      ```
@@ -52,6 +53,7 @@ If you have issues or find something that isn't working please submit an [issue 
                                      // Messages have character limit (128)
        "player_join_strings": {},    // Welcome messages
        "random_track_rotation": true // Rotation mode (does not work at the moment)
+       "tesseract_installation_path": "..." // Path to Tesseract-OCR, See: "Requirements"
    }
    ```
 ## 🚀 Usage
