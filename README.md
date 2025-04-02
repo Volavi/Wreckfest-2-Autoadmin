@@ -1,7 +1,7 @@
 
 ![Script banner](images/wreckfest2_autoadmin_script_banner.png)
 
-# Wreckfest 2 AutoAdmin Tool
+## About
 
 An automated administration tool for Wreckfest 2 dedicated server that handles track rotation, player management, and server messaging.
 
