@@ -226,4 +226,5 @@ if __name__ == "__main__":
     app_name = admin.config.get('app_name', 'Wreckfest 2 Auto-Admin')
     if admin.config.get('display_init_message', True):
         admin.send_server_message(f"{app_name} initialized! Automatic track rotation enabled.")
+    admin.select_track()
     admin.monitor_server()
