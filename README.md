@@ -1,5 +1,5 @@
 
-![Wreckfest Logo](https://wreckfest2.thqnordic.com/game-sites/wreckfest2/logo_wreckfest2.png)
+![Script banner](images/wreckfest2_autoadmin_script_banner.png)
 
 # Wreckfest 2 AutoAdmin Tool
 
