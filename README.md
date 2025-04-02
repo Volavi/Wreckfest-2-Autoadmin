@@ -51,10 +51,11 @@ If you have issues or find something that isn't working please submit an [issue 
        "banner_strings": {},         // "Banner" to be shown in chat after every race
                                      // Messages have character limit (128)
        "player_join_strings": {},    // Welcome messages
-       "random_track_rotation": true // Rotation mode (does not work at the moment)
        "tesseract_installation_path": "..." // Path to Tesseract-OCR, See: "Requirements"
    }
    ```
+   - NOTE: `"debug_mode": false` and `"random_track_rotation": true` variables are not used ATM and do nothing!
+     
 ## 🚀 Usage
 
    - Make sure that the Wreckfest 2 Dedicated server is running
