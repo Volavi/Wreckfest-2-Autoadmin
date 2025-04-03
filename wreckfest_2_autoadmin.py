@@ -27,6 +27,7 @@ class WreckfestAutoAdmin:
         self.TRACK_ROTATION = self.config.get('track_rotation', [])
         self.banner_strings = self.config.get('banner_strings', [{}])[0]
         self.player_join_strings = self.config.get('player_join_strings', [{}])[0]
+        self.debug_settings = self.config.get('debug_settings', {})
         self.locate_server_window()
 
     def load_config(self, config_file='config.json'):
@@ -44,13 +45,14 @@ class WreckfestAutoAdmin:
     def locate_server_window(self):
         """Find and activate the Wreckfest 2 server window"""
         try:
-            self.server_window = gw.getWindowsWithTitle('Wreckfest 2')[0]
+            self.server_window = gw.getWindowsWithTitle('Wreckfest 2 | ')[0]
             if self.server_window:
                 self.server_window.activate()
                 time.sleep(1)
-                print(f"Found server window: {self.server_window.title}")
-                print(f"Window position: (left={self.server_window.left}, top={self.server_window.top})")
-                print(f"Window size: (width={self.server_window.width}, height={self.server_window.height})")
+                if self.debug_settings.get('print_console_actions', False):
+                    print(f"Found server window: {self.server_window.title}")
+                    print(f"Window position: (left={self.server_window.left}, top={self.server_window.top})")
+                    print(f"Window size: (width={self.server_window.width}, height={self.server_window.height})")
             else:
                 raise Exception("Wreckfest 2 server window not found")
         except IndexError:
@@ -85,7 +87,7 @@ class WreckfestAutoAdmin:
         """Analyze console output and react to events"""
         for line in text.split('\n'):
             line = line.strip()
-            if self.config.get('debug_mode', False):
+            if self.debug_settings.get('print_ocr_capture', False):
                 print(line)
             if not line:
                 continue  # Skip empty lines
@@ -93,11 +95,11 @@ class WreckfestAutoAdmin:
             # Check if line is a system message (no ":" before the keyword)
             if ("Race Finished" in line or "Race Abandoned" in line):
                 
-                # Only proceed if there's no player name prefix (no ":" before the keywords)
+                # Only proceed if there's no player name prefix (no ": " before the keywords)
                 if ": " not in line.split("Race Finished")[0] and \
                 ": " not in line.split("Race Abandoned")[0]:
-                    
-                    #DEBUG print("Detected system message (Race Finished)")
+                    if self.debug_settings.get('print_console_actions', False):
+                        print("Detected system message (Race Finished)")
                     self.send_server_command("race_director disabled")
                     
                     # Send banner messages
@@ -111,14 +113,21 @@ class WreckfestAutoAdmin:
             # Similar logic for Race Started
             elif ("Race Started" in line) and \
                 ":" not in line.split("Race Started")[0]:
-                
-                for i in range(0, 15):
-                    self.send_server_command("FILLING")
+                if self.debug_settings.get('print_console_actions', False):
+                    print("Detected system message (Race Started)")
+                for i in range(0, 25):
+                    # Clear console window
+                    self.send_server_command(" ")
                 self.send_server_command("race_director enabled")
+                for i in range(0, 5):
+                    # Clear console window
+                    self.send_server_command(" ")
 
             # Player join detection
             join_matches = re.finditer(r'Player joined: \d+, (.+?), \d+', line)
             for match in join_matches:
+                if self.debug_settings.get('print_console_actions', False):
+                    print(f"Detected player join: {line}")
                 player = match.group(1)
                 if player not in self.players:
                     self.players.append(player)
@@ -130,10 +139,11 @@ class WreckfestAutoAdmin:
             # Player leave detection
             leave_match = re.search(r'Player left: \d+, (.+?), \d+', line)
             if leave_match:
+                if self.debug_settings.get('print_console_actions', False):
+                        print(f"Detected player left: {line}")
                 player = leave_match.group(1)
                 if player in self.players:
                     self.players.remove(player)
-                    #DEBUG print(f"Player left: {player}")
 
     def select_track(self):
         """Select and apply the next track in rotation, ensuring no immediate repeats"""
@@ -210,11 +220,11 @@ class WreckfestAutoAdmin:
         if msg:
             self.send_server_message(msg)
         
-        for i in range(0, 15):
-            self.send_server_command("FILLING")
+        for i in range(0, 5):
+            self.send_server_command(" ")
 
     def monitor_server(self):
-        """Main monitoring loop - now with proper console text capture"""
+        """Main monitoring loop"""
         print("Wreckfest 2 Auto-Admin started. Monitoring server console...")
         try:
             while True:
@@ -238,10 +248,10 @@ class WreckfestAutoAdmin:
             x, y = self.server_window.left, self.server_window.top
             width, height = self.server_window.width, self.server_window.height
             
-            # Define the region to capture (adjust these values to focus on the console area)
-            console_x = x + 7  # 15 pixels from left edge of window
+            # Define the region to capture (You might need to adjust these values to focus on the console area)
+            console_x = x + 7  # 7 pixels from left edge of window
             console_y = y + 30  # 30 pixels from top edge of window
-            console_width = width - 30  # 15px margin on each side
+            console_width = width - 30  # 30px margin on each side
             console_height = height - 50  # Leave space for window borders
             
             # Take screenshot of just the console area
@@ -251,8 +261,8 @@ class WreckfestAutoAdmin:
             img = screenshot.convert('L')  # Grayscale
             img = img.point(lambda p: p * 2)  # Increase contrast
             
-            if self.config.get('debug_mode', False):
-                # Optional: Save processed image for debugging
+            if self.debug_settings.get('save_ocr_screenshots', False):
+                # debug: Save processed image for debugging
                 img.save("processed_console.png")
                 screenshot.save("console_screenshot.png")
             
@@ -266,7 +276,8 @@ class WreckfestAutoAdmin:
 if __name__ == "__main__":
     admin = WreckfestAutoAdmin()
     app_name = admin.config.get('app_name', 'Wreckfest 2 Auto-Admin')
+    app_ver = admin.config.get('version', '0.2')
     if admin.config.get('display_init_message', True):
-        admin.send_server_message(f"{app_name} initialized! Automatic track rotation enabled.")
+        admin.send_server_message(f"{app_name} Ver:{app_ver} initialized! Automatic track rotation enabled.")
     admin.select_track()
     admin.monitor_server()
