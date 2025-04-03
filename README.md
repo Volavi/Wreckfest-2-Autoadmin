@@ -51,10 +51,10 @@ If you have issues or find something that isn't working please submit an [issue 
        "banner_strings": {},         // "Banner" to be shown in chat after every race
                                      // Messages have character limit (128)
        "player_join_strings": {},    // Welcome messages
-       "tesseract_installation_path": "..." // Path to Tesseract-OCR, See: "Requirements"
+       "tesseract_installation_path": "...", // Path to Tesseract-OCR, See: "Requirements"
    }
    ```
-   - NOTE: `"debug_mode": false` and `"random_track_rotation": true` variables are not used at the moment and do nothing!
+   - NOTE: `"random_track_rotation": true` variable is not used at the moment and does nothing!
      
 ## 🚀 Usage
 
@@ -69,6 +69,8 @@ If you have issues or find something that isn't working please submit an [issue 
    2. Begin monitoring console output
    3. Handle track rotations when races end
    4. Welcome new players with configurable messages
+
+   - If you run into problems you can start by setting different debug sections to **true** `"debug_settings"` -section in the `config.json` -file!
 
 ## ✅ The Good
    
@@ -99,7 +101,6 @@ If you have issues or find something that isn't working please submit an [issue 
   - Randomised weather selection for tracks
   - Automatic (configurable) removal and addition of bots in relation to player count
   - Better error handling for OCR failures
-  - Ability to add verbosity from config file via debug_mode
   - Automatic moderation of chat messages and server actions derived from them
 
 ## 🤝 Contributing
