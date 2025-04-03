@@ -1,9 +1,13 @@
 {
     "app_name": "Wreckfest 2 AutoAdmin by @Volavi",
-    "version": 0.1,
+    "version": 0.2,
     "author": "@Volavi",
     "display_init_message": true,
-    "debug_mode": false,
+    "debug_settings": {
+        "print_console_actions": false,
+        "print_ocr_capture": false,
+        "save_ocr_screenshots": false
+    },
     "random_track_rotation": true,
     "countdown_time": 50,
     "tesseract_installation_path": "C:\\Program Files\\Tesseract-OCR\\tesseract.exe",
