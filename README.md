@@ -9,7 +9,7 @@ Still very WIP but plans are in motion to make this into a very flexible and pow
 
 If you have issues or find something that isn't working please submit an [issue ticket](https://github.com/Volavi/Wreckfest-2-Autoadmin/issues) or use the [discussions](https://github.com/Volavi/Wreckfest-2-Autoadmin/discussions) -page!
 
-*Be prepeared for crashes and issues! I myself have been running this script within a .bat script that checks if it is running or not making sure that it restarts and runs with the Server window*
+*Be prepeared for crashes and issues! I myself have been running this script within a .bat script that checks if it is running or not making sure that it restarts and runs with the Server window. Sometimes the OCR does not pick up stuff from the console window which might prevent it from changing tracks.*
 
 ## ✨ Features
 
