@@ -259,7 +259,7 @@ class WreckfestAutoAdmin:
 
             # Convert to grayscale and enhance contrast
             img = screenshot.convert('L')  # Grayscale
-            img = img.point(lambda p: p * 2)  # Increase contrast
+            img = img.point(lambda p: p * 1.5)  # Increase contrast
             
             if self.debug_settings.get('save_ocr_screenshots', False):
                 # debug: Save processed image for debugging
