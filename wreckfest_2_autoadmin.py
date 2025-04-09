@@ -28,6 +28,7 @@ class WreckfestAutoAdmin:
         self.banner_strings = self.config.get('banner_strings', [{}])[0]
         self.player_join_strings = self.config.get('player_join_strings', [{}])[0]
         self.debug_settings = self.config.get('debug_settings', {})
+        self.processed_messages = set()  # Stores hashes of already processed messages
         self.locate_server_window()
 
     def load_config(self, config_file='config.json'):
@@ -85,6 +86,7 @@ class WreckfestAutoAdmin:
 
     def process_console_output(self, text):
         """Analyze console output and react to events"""
+        
         for line in text.split('\n'):
             line = line.strip()
             if self.debug_settings.get('print_ocr_capture', False):
@@ -92,7 +94,16 @@ class WreckfestAutoAdmin:
             if not line:
                 continue  # Skip empty lines
 
-            # Check if line is a system message (no ":" before the keyword)
+            # Create a unique hash for each line
+            line_hash = hash(line)
+            
+            # Skip already processed messages
+            if line_hash in self.processed_messages:
+                continue
+                
+            self.processed_messages.add(line_hash)
+
+            # Check if line is a system message
             if ("Race Finished" in line or "Race Abandoned" in line):
                 
                 # Only proceed if there's no player name prefix (no ": " before the keywords)
@@ -129,8 +140,12 @@ class WreckfestAutoAdmin:
                 if self.debug_settings.get('print_console_actions', False):
                     print(f"Detected player join: {line}")
                 player = match.group(1)
+                
+                # Check if player is already in the list (not just joined)
                 if player not in self.players:
                     self.players.append(player)
+                    
+                    # Only send welcome messages if player is new
                     for i in range(1, 3):
                         msg = self.player_join_strings.get(f'player_join_string_{i}', '')
                         if msg:
