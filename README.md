@@ -47,6 +47,11 @@ If you have issues or find something that isn't working please submit an [issue 
    Key configurable elements in `config.json`:
    ```json
    {
+       "debug_settings": {
+         "save_ocr_screenshots": false,  // Saves OCR input images for debugging
+         "print_ocr_capture": false,     // Prints raw OCR output to console
+         "print_console_actions": true   // Logs detected system messages
+       }
        "track_rotation": [],         // Your track configurations including: laps, bots, damage, etc...
        "banner_strings": {},         // "Banner" to be shown in chat after every race
                                      // Messages have character limit (128)
