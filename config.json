@@ -1,6 +1,6 @@
 {
     "app_name": "Wreckfest 2 AutoAdmin by @Volavi",
-    "version": 0.2,
+    "version": 0.3,
     "author": "@Volavi",
     "display_init_message": true,
     "debug_settings": {
@@ -10,6 +10,7 @@
     },
     "random_track_rotation": true,
     "countdown_time": 50,
+    "abandon_race_after_minutes": 0,
     "tesseract_installation_path": "C:\\Program Files\\Tesseract-OCR\\tesseract.exe",
     "banner_strings": [
         {
@@ -58,7 +59,7 @@
             "name": "Speedway Race",
             "type": "Banger Race",
             "rules": "race",
-            "laps": 7,
+            "laps": 9,
             "damage": "normal",
             "bots": 8
         },
