@@ -141,6 +141,7 @@ class WreckfestAutoAdmin:
                         if msg:
                             self.send_server_message(msg)
                     time.sleep(5)
+                    self.race_start_time = None  # Reset timer
                     self.select_track()
 
             # Similar logic for Race Started
