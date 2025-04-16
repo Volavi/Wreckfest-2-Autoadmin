@@ -26,6 +26,9 @@ If you have issues or find something that isn't working please submit an [issue 
    - Python 3.8+
    - Tesseract OCR installed ([Download here](https://github.com/UB-Mannheim/tesseract/wiki))
    - Wreckfest 2 dedicated server
+      - To get your server up and running there are good guides for them
+         - [How To Host Your Own Dedicated Server - by Gem (Steam guide)](https://steamcommunity.com/sharedfiles/filedetails/?id=3448545991)
+         - [Wreckfest Chronicles - Wreckfest 2 Dedicated Server - by The Stig (Google Docs)](https://docs.google.com/spreadsheets/d/1r-q9IpdwF9FcYfy9OMheju524rcyO-Vq4_4lX5uB-jc/edit?gid=0#gid=0)
   
 2. **Download this repo or download ZIP from [*Releases*](https://github.com/Volavi/Wreckfest-2-Autoadmin/releases) -page**:
 
@@ -51,6 +54,7 @@ If you have issues or find something that isn't working please submit an [issue 
        "banner_strings": {},         // "Banner" to be shown in chat after every race
                                      // Messages have character limit (128)
        "player_join_strings": {},    // Welcome messages
+       "abandon_race_after_minutes": 0,      // Time-limit on races >> 0 = no time limit
        "tesseract_installation_path": "...", // Path to Tesseract-OCR, See: "Requirements"
    }
    ```
@@ -70,7 +74,13 @@ If you have issues or find something that isn't working please submit an [issue 
    3. Handle track rotations when races end
    4. Welcome new players with configurable messages
 
-   - If you run into problems you can start by setting different debug sections to **true** `"debug_settings"` -section in the `config.json` -file!
+   - To update the script:
+      1. Backup your `config.json`-file
+      2. Pull the latest version of the reposityory (or download and unzip from [*Releases*](https://github.com/Volavi/Wreckfest-2-Autoadmin/releases) -page)
+      3. Replace the default `config.json`-file with your own
+      4. Run the script
+
+   - *If you run into problems you can start by setting different debug sections to **true** `"debug_settings":` -section in the `config.json` -file!*
 
 ## ✅ The Good
    
@@ -102,6 +112,13 @@ If you have issues or find something that isn't working please submit an [issue 
   - Automatic (configurable) removal and addition of bots in relation to player count
   - Better error handling for OCR failures
   - Automatic moderation of chat messages and server actions derived from them
+
+## 💡 Performance Tips
+
+   For best results:
+   1. Keep the server window at default size (don't minimize)
+   2. Use the default console font and size
+   3. Close other applications that might overlay the console
 
 ## 🤝 Contributing
    Contributions welcome! Please fork the repository and submit pull requests.
