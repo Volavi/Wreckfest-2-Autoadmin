@@ -30,7 +30,9 @@ class WreckfestAutoAdmin:
         self.banner_strings = self.config.get('banner_strings', [{}])[0]
         self.player_join_strings = self.config.get('player_join_strings', [{}])[0]
         self.debug_settings = self.config.get('debug_settings', {})
-        self.processed_messages = set()  # Stores hashes of already processed messages
+        self.processed_messages = set()
+        self.race_start_time = None
+        self.abandon_time_minutes = self.config.get('abandon_race_after_minutes', 0)
         self.locate_server_window()
 
     def load_config(self, config_file='config.json'):
@@ -86,6 +88,24 @@ class WreckfestAutoAdmin:
         pyautogui.press('enter')
         time.sleep(0.01)
 
+    def clear_console(self):
+        for i in range(0, 25):
+            # Clear console window
+            pyautogui.press('enter')
+        # re-init hashes
+        self.processed_messages = set()
+
+    def check_abandon_race(self):
+        """Check if race should be abandoned based on configured time (minutes)"""
+        if self.abandon_time_minutes <= 0:
+            return False  # Feature disabled
+            
+        if self.race_start_time is None:
+            return False  # No race in progress
+            
+        elapsed_minutes = (time.time() - self.race_start_time) / 60
+        return elapsed_minutes >= self.abandon_time_minutes
+
     def process_console_output(self, text):
         """Analyze console output and react to events"""
         
@@ -125,16 +145,16 @@ class WreckfestAutoAdmin:
 
             # Similar logic for Race Started
             elif ("Race Started" in line) and \
-                ":" not in line.split("Race Started")[0]:
+                ": " not in line.split("Race Started")[0]:
+                # Start the clock
+                self.race_start_time = time.time()
                 if self.debug_settings.get('print_console_actions', False):
                     print("Detected system message (Race Started)")
-                for i in range(0, 25):
-                    # Clear console window
-                    self.send_server_command(" ")
+                self.clear_console()
                 self.send_server_command("race_director enabled")
                 for i in range(0, 5):
-                    # Clear console window
-                    self.send_server_command(" ")
+                    # Create empty lines to help see the Race Finished message
+                    pyautogui.press('enter')
 
             # Player join detection
             join_matches = re.finditer(r'Player joined: \d+, (.+?), \d+', line)
@@ -238,7 +258,9 @@ class WreckfestAutoAdmin:
             self.send_server_message(msg)
         
         for i in range(0, 5):
-            self.send_server_command(" ")
+            pyautogui.press('enter')
+        # re-init hashes
+        self.processed_messages = set()
 
     def write_crash_log(self, error):
         """Write crash information to a dated log file"""
@@ -276,6 +298,19 @@ class WreckfestAutoAdmin:
                     console_text = self.capture_console_text()
                     if console_text:
                         self.process_console_output(console_text)
+                     # Check if we should abandon the race
+                    if self.check_abandon_race():
+                        if self.debug_settings.get('print_console_actions', False):
+                            print(f"Race timeout reached ({self.abandon_time_minutes} minutes) - abandoning race")
+                        self.send_server_command("abandon")
+                        self.race_start_time = None  # Reset timer
+                        # Send banner messages after abandonment
+                        for i in range(1, 8):
+                            msg = self.banner_strings.get(f'banner_string_{i}', '')
+                            if msg:
+                                self.send_server_message(msg)
+                        time.sleep(5)
+                        self.select_track()
                     time.sleep(1)
                     
                 except Exception as e:
@@ -313,7 +348,7 @@ class WreckfestAutoAdmin:
 
             # Convert to grayscale and enhance contrast
             img = screenshot.convert('L')  # Grayscale
-            img = img.point(lambda p: p * 1.5)  # Contrast
+            img = img.point(lambda p: p * 1)  # Contrast
             
             if self.debug_settings.get('save_ocr_screenshots', False):
                 # debug: Save processed image for debugging
@@ -334,6 +369,7 @@ if __name__ == "__main__":
         app_ver = admin.config.get('version', '0.2')
         if admin.config.get('display_init_message', True):
             admin.send_server_message(f"{app_name} Ver:{app_ver} initialized! Automatic track rotation enabled.")
+        time.sleep(5)  # Wait for a bit before starting the monitoring loop to prevent fail-safe-triggers
         admin.select_track()
         admin.monitor_server()
     except Exception as e:
