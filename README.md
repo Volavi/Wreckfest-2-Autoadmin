@@ -30,7 +30,8 @@ If you have issues or find something that isn't working please submit an [issue 
          - [How To Host Your Own Dedicated Server - by Gem (Steam guide)](https://steamcommunity.com/sharedfiles/filedetails/?id=3448545991)
          - [Wreckfest Chronicles - Wreckfest 2 Dedicated Server - by The Stig (Google Docs)](https://docs.google.com/spreadsheets/d/1r-q9IpdwF9FcYfy9OMheju524rcyO-Vq4_4lX5uB-jc/edit?gid=0#gid=0)
   
-2. **Download this repo or download ZIP from [*Releases*](https://github.com/Volavi/Wreckfest-2-Autoadmin/releases) -page**:
+2. **Download**: 
+   - Download [this repo](https://github.com/Volavi/Wreckfest-2-Autoadmin/archive/refs/heads/main.zip) or download a stripped ZIP from [*Releases*](https://github.com/Volavi/Wreckfest-2-Autoadmin/releases) -page
 
 3. **Install dependencies**:
    - Open CMD in the repository folder or navigate to it, and type:
@@ -68,22 +69,23 @@ If you have issues or find something that isn't working please submit an [issue 
 ## 🚀 Usage
 
    - Make sure that the Wreckfest 2 Dedicated server is running
-   - Run the script within it's folder:
+   - Run the script within it's folder either by double clicking or by typing:
       ```bash
       python wreckfest_2_autoadmin.py
       ```
-   The tool will:
+   **🖥️ The tool will:**
    
    1. Automatically find your Wreckfest server window
    2. Begin monitoring console output
    3. Handle track rotations when races end
    4. Welcome new players with configurable messages
 
-   - To update the script:
-      1. Backup your `config.json`-file
-      2. Pull the latest version of the reposityory (or download and unzip from [*Releases*](https://github.com/Volavi/Wreckfest-2-Autoadmin/releases) -page)
-      3. Replace the default `config.json`-file with your own
-      4. Run the script
+   **🔄 To update the script:**
+
+   1. Backup your `config.json`-file
+   2. Pull the latest version of the [repository](https://github.com/Volavi/Wreckfest-2-Autoadmin/archive/refs/heads/main.zip) with `git pull` or `git clone` (or download and unzip from [*Releases*](https://github.com/Volavi/Wreckfest-2-Autoadmin/releases) -page)
+   3. Replace the default `config.json`-file with your own
+   4. Run the script
 
    - *If you run into problems you can start by setting different debug sections to **true** `"debug_settings":` -section in the `config.json` -file!*
 
