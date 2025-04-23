@@ -28,7 +28,7 @@ If you have issues or find something that isn't working please submit an [issue 
    - Wreckfest 2 dedicated server
       - To get your server up and running there are good guides for them
          - [How To Host Your Own Dedicated Server - by Gem (Steam guide)](https://steamcommunity.com/sharedfiles/filedetails/?id=3448545991)
-         - [Wreckfest Chronicles - Wreckfest 2 Dedicated Server - by The Stig (Google Docs)](https://docs.google.com/spreadsheets/d/1r-q9IpdwF9FcYfy9OMheju524rcyO-Vq4_4lX5uB-jc/edit?gid=0#gid=0)
+         - [Wreckfest Chronicles - Wreckfest 2 Dedicated Server - by EmDzei (Google Docs)](https://docs.google.com/spreadsheets/d/1r-q9IpdwF9FcYfy9OMheju524rcyO-Vq4_4lX5uB-jc/edit?gid=0#gid=0)
   
 2. **Download**: 
    - Download [this repo](https://github.com/Volavi/Wreckfest-2-Autoadmin/archive/refs/heads/main.zip) or download a stripped ZIP from [*Releases*](https://github.com/Volavi/Wreckfest-2-Autoadmin/releases) -page
