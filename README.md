@@ -35,9 +35,9 @@ If you have issues or find something that isn't working please submit an [issue 
 
 3. **Install dependencies**:
    - Open CMD in the repository folder or navigate to it, and type:
-   ```bash
-   pip install -r requirements.txt
-   ```
+      ```bash
+      pip install -r requirements.txt
+      ```
 5. **Configure**:
    - Edit `config.json` to match your server preferences
    - Set your Tesseract path in config (Pre set string in `config.json` is the default location):
