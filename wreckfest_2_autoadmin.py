@@ -15,6 +15,8 @@ class WreckfestAutoAdmin:
         self.players = []
         self.server_window = None
         self.config = self.load_config()
+        self.screen_width, self.screen_height = pyautogui.size()
+        pyautogui.moveTo(self.screen_width // 2, self.screen_height // 2)
 
         # Configure Tesseract - with fallback if not in config
         tesseract_path = self.config.get('tesseract_installation_path')
@@ -69,6 +71,7 @@ class WreckfestAutoAdmin:
             exit(1)
 
     def send_server_message(self, text):
+        self.center_mouse()
         """Send message to all players"""
         if not self.server_window.isActive:
             self.server_window.activate()
@@ -79,6 +82,7 @@ class WreckfestAutoAdmin:
         time.sleep(0.01)
 
     def send_server_command(self, command):
+        self.center_mouse()
         """Send command to server console"""
         if not self.server_window.isActive:
             self.server_window.activate()
@@ -89,6 +93,7 @@ class WreckfestAutoAdmin:
         time.sleep(0.01)
 
     def clear_console(self):
+        self.center_mouse()
         for i in range(0, 25):
             # Clear console window
             pyautogui.press('enter')
@@ -182,8 +187,13 @@ class WreckfestAutoAdmin:
                 player = leave_match.group(1)
                 if player in self.players:
                     self.players.remove(player)
+    
+    def center_mouse(self):
+        # This is a workaround for the fail-safe feature of pyautogui
+        pyautogui.moveTo(self.screen_width // 2, self.screen_height // 2)
 
     def select_track(self):
+        self.center_mouse()
         """Select and apply the next track in rotation, ensuring no immediate repeats"""
         self.send_server_command("race_director disabled")
         time.sleep(5)
@@ -370,7 +380,7 @@ if __name__ == "__main__":
         app_ver = admin.config.get('version', '0.2')
         if admin.config.get('display_init_message', True):
             admin.send_server_message(f"{app_name} Ver:{app_ver} initialized! Automatic track rotation enabled.")
-        time.sleep(5)  # Wait for a bit before starting the monitoring loop to prevent fail-safe-triggers
+        admin.center_mouse()
         admin.select_track()
         admin.monitor_server()
     except Exception as e:
