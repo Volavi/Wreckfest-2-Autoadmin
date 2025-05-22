@@ -37,6 +37,24 @@
     },
     "track_rotation": [
         {
+            "track": "track01_1",
+            "name": "FinnCross Circuit",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 4
+        },
+        {
+            "track": "track01_1_rev",
+            "name": "FinnCross Circuit - Reverse",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 4
+        },
+        {
             "track": "track02_1",
             "name": "Savolax Sandpit",
             "type": "Banger Race",
@@ -48,6 +66,15 @@
         {
             "track": "track02_1_rev",
             "name": "Savolax Sandpit - Reversed",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 4
+        },
+        {
+            "track": "track05_1",
+            "name": "European Rallycross",
             "type": "Banger Race",
             "rules": "race",
             "laps": 3,

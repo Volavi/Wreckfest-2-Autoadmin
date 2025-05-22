@@ -178,6 +178,7 @@ class WreckfestAutoAdmin:
                         msg = self.player_join_strings.get(f'player_join_string_{i}', '')
                         if msg:
                             self.send_server_message(msg.format(player=player))
+                            pyautogui.press('enter')
 
             # Player leave detection
             leave_match = re.search(r'Player left: \d+, (.+?), \d+', line)
