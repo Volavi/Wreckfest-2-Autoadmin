@@ -22,7 +22,6 @@
             "banner_string_6": "",
             "banner_string_7": ""
         }
- 
     ],
     "player_join_strings": [
         {
@@ -134,6 +133,123 @@
             "time": 3,
             "damage": "realistic",
             "bots": 6
+        },
+        {
+            "track": "track09_1",
+            "name": "Industrial Circuit",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 8
+        },
+        {
+            "track": "track09_2",
+            "name": "Industrial Circuit - Variant",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 8
+        },
+        {
+            "track": "track09_3",
+            "name": "Industrial Circuit - Short",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 8
+        },
+        {
+            "track": "track02_2",
+            "name": "Savolax Sandpit - Short",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 8
+        },
+        {
+            "track": "track02_2_rev",
+            "name": "Savolax Sandpit - Short - Reversed",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 8
+        },
+        {
+            "track": "track07_1_rev",
+            "name": "Scrapyard Main Route - Reverse",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 8
+        },
+        {
+            "track": "track07_2",
+            "name": "Scrapyard Inner Loop",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 8
+        },
+        {
+            "track": "track07_4",
+            "name": "Scrapyard Outer Loop",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 8
+        },
+        {
+            "track": "track07_5",
+            "name": "Scrapyard Backlot",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 8
+        },
+        {
+            "track": "track06_3",
+            "name": "Speedway Short Loop",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 8
+        },
+        {
+            "track": "track04_1",
+            "name": "Club Circuit",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 8
+        },
+        {
+            "track": "track04_1_rev",
+            "name": "Club Circuit - Reverse",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 8
+        },
+        {
+            "track": "track05_1_rev",
+            "name": "European Rallycross - Reverse",
+            "type": "Banger Race",
+            "rules": "race",
+            "laps": 3,
+            "damage": "normal",
+            "bots": 8
         }
     ]
 }
